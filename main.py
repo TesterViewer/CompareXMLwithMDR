@@ -3,7 +3,6 @@ import glob
 import errno
 import re
 
-
 filespaths = ['C:\Users\TIEN_CERT\Desktop\Temp\Workspace\input\*xml','C:\Users\TIEN_CERT\Desktop\Temp\Workspace\input\*mdr']
 for filespath in filespaths:
   file = glob.glob(filespath)
