@@ -32,7 +32,11 @@ for filespath in filespaths:
               resulttemp = content.replace(trimStart, "",1)
               result = resulttemp.replace(trimEnd, "",1)
               result = result.strip();
-              result = result +'.'
+              print result
+              if result.find(".0",len(result) -2,len(result)) == -1:
+                print len(result)
+                result = result +'.'
+                print "ABC: " + result
               lstXml.append(0)
               for index in mdrcontent:
                 if index.find(result,0,len(index)) != -1:
