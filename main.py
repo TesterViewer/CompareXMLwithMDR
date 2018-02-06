@@ -4,6 +4,7 @@ import glob
 import errno
 import re
 
+
 #We need situation for scalar. Because when you using line result + '.'.Scalar won't founded in mdr
 filespaths = ['..\CompareXMLwithMDR\input\*xml']
 mdrpath = '..\CompareXMLwithMDR\input\walk_convert.mdr'
