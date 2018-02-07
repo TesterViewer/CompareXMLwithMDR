@@ -50,4 +50,3 @@ for filespath in filespaths:
       if exc.errno != errno.EISDIR:
         raise
 fo.close()
-print "Simple analyze completed"
