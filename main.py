@@ -31,9 +31,7 @@ for filespath in filespaths:
               resulttemp = content.replace(trimStart, "",1)
               result = resulttemp.replace(trimEnd, "",1)
               result = result.strip();
-              print result
               if result.find(".0",len(result) -2,len(result)) == -1:
-                print len(result)
                 result = result +'.'
               lstXml.append(0)
               for index in mdrcontent:
@@ -46,10 +44,10 @@ for filespath in filespaths:
             isMissing = True
         if isMissing == True:
           fo.write(f.name+'\n')
-        print "Basic analyze completed"
       mdr.close()
       f.close()
     except IOError as exc:
       if exc.errno != errno.EISDIR:
         raise
 fo.close()
+print "Basic analyze completed"
