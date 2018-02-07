@@ -5,9 +5,11 @@ import errno
 import re
 
 filespaths = ['..\CompareXMLwithMDR\input\*xml']
-mdrpath = '..\CompareXMLwithMDR\input\walk_convert.mdr'
-fo = open('..\CompareXMLwithMDR\output\outVCError.txt','w')
-fo.write("THIS IS BELOW LIST VC DO NOT IN MDR\n")
+mdrpath = '..\CompareXMLwithMDR\input\input_mdr.mdr'
+fo_error = open('..\CompareXMLwithMDR\output\outVCError.txt','w')
+fo = open('..\CompareXMLwithMDR\output\outVC.txt','w')
+fo_error.write("THIS IS BELOW LIST VCs DO NOT IN MDR\n")
+fo.write("THIS IS BELOW LIST VCs IN MDR\n")
 strKey = '<IsKey>false</IsKey>'
 
 for filespath in filespaths:
@@ -37,16 +39,22 @@ for filespath in filespaths:
               for index in mdrcontent:
                 if index.find(result,0,len(index)) != -1:
                   lstXml[len(lstXml) - 1] = 1
+        if lstXml == []:
+          isMissing = True
         for element in lstXml:
           if element == 0:
             isMissing = True
-          elif lstXml == []:
-            isMissing = True
         if isMissing == True:
+          fo_error.write(f.name+'\n')
+        else:
           fo.write(f.name+'\n')
       mdr.close()
       f.close()
     except IOError as exc:
       if exc.errno != errno.EISDIR:
         raise
+fo_error.close()
 fo.close()
+
+
+
