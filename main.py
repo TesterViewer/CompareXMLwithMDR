@@ -10,7 +10,8 @@ fo_error = open('..\CompareXMLwithMDR\output\outVCError.txt','w')
 fo = open('..\CompareXMLwithMDR\output\outVC.txt','w')
 fo_error.write("THIS IS BELOW LIST VCs DO NOT IN MDR\n")
 fo.write("THIS IS BELOW LIST VCs IN MDR\n")
-strKey = '<IsKey>false</IsKey>'
+strFKey = '<IsKey>false</IsKey>'
+strKey = '<IsKey>true</IsKey>'
 
 for filespath in filespaths:
   file = glob.glob(filespath)
@@ -26,8 +27,10 @@ for filespath in filespaths:
           content = f.readline()
           trimStart = "<Source>"
           trimEnd = "</Source>"
-          if content.find(strKey,0,len(content)) != -1:
+          if content.find(strFKey,0,len(content)) != -1:
             isKey = False
+          if content.find(strKey,0,len(content)) != -1:
+            isKey = True
           if isKey == True:
             if content.find(trimStart,0,len(content)) != -1:
               resulttemp = content.replace(trimStart, "",1)
